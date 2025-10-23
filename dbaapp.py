@@ -1,4 +1,3 @@
-
 import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
@@ -16,7 +15,7 @@ def combine_SPL(Lp1, Lp2):
     combined = louder + L_plus
     return combined, delta_L, L_plus
 
-st.title("Sound Pressure Level (SPL) Combiner")
+st.title("Sound Pressure Level (SPL) Addition Calculator")
 st.markdown("""
 This app calculates the combined SPL from multiple noise sources using standard acoustic procedures.
 """)
@@ -24,7 +23,7 @@ This app calculates the combined SPL from multiple noise sources using standard 
 spl_values = st.text_input("Enter SPL values (comma-separated, e.g. 90,85,88):", "90,85,88")
 
 try:
-    spl_list = [float(val.strip()) for val in spl_values.split(",") if val.strip()]
+    spl_list = [float(val.strip()) for val in spl_values.split(",") if val.strip().replace('.', '', 1).isdigit()]
     if len(spl_list) < 2:
         st.warning("Please enter at least two SPL values.")
     else:
@@ -52,4 +51,4 @@ try:
         st.plotly_chart(fig)
 
 except ValueError:
-    st.error("Invalid input. Please enter numeric SPL values separated by commas.")
+     st.error("Invalid input. Please enter numeric SPL values separated by commas.")
