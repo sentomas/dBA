@@ -46,9 +46,7 @@ try:
         fig.add_trace(go.Scatter(x=delta_range, y=lplus_values, mode='lines', name='L+ vs ΔL'))
         fig.update_layout(title='ΔL vs L+ Chart', xaxis_title='ΔL (dB)', yaxis_title='L+ (dB)')
 
-        fig.write_json("deltaL_vs_Lplus.json")
-        fig.write_image("deltaL_vs_Lplus.png")
         st.plotly_chart(fig)
 
 except ValueError:
-     st.error("Invalid input. Please enter numeric SPL values separated by commas.")
+    st.error("Invalid input. Please enter numeric SPL values separated by commas.")
